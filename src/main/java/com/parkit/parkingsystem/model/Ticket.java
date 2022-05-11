@@ -11,6 +11,16 @@ public class Ticket {
     private Date inTime;
     private Date outTime;
 
+    private boolean discount;
+
+    public boolean isDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(boolean discount) {
+        this.discount = discount;
+    }
+
     public int getId() {
         return id;
     }

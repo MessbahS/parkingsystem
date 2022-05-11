@@ -3,6 +3,7 @@ package com.parkit.parkingsystem.service;
 import com.parkit.parkingsystem.constants.Fare;
 import com.parkit.parkingsystem.model.Ticket;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class FareCalculatorService {
@@ -32,6 +33,11 @@ public class FareCalculatorService {
                 break;
             }
             default: throw new IllegalArgumentException("Unknown Parking Type");
+        }
+        if (ticket.isDiscount()){
+            BigDecimal price = BigDecimal.valueOf(ticket.getPrice());
+            price = price.multiply(BigDecimal.valueOf(0.95));
+            ticket.setPrice(price.doubleValue());
         }
     }
 }
